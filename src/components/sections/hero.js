@@ -59,31 +59,39 @@ const Hero = () => {
     return () => clearTimeout(timeout);
   }, []);
 
+  // ==================== 🛠️ 在下方修改你的个人信息 ====================
+
+  // 1. 最顶部的打招呼（可以用英文，也可以改中文比如 <h1>你好，我是</h1>）
   const one = <h1>Hi, my name is</h1>;
-  const two = <h2 className="big-heading">Brittany Chiang.</h2>;
-  const three = <h3 className="big-heading">I build things for the web.</h3>;
+
+  // 2. 你的名字（大标题）
+  const two = <h2 className="big-heading">Urian.</h2>;
+
+  // 3. 一句话职业定位（第二大标题）
+  const three = <h3 className="big-heading">我是一名全栈开发小白。</h3>;
+
+  // 4. 你的简短自我介绍
   const four = (
     <>
       <p>
-        I’m a software engineer specializing in building (and occasionally designing) exceptional
-        digital experiences. Currently, I’m focused on building accessible, human-centered products
-        at{' '}
-        <a href="https://upstatement.com/" target="_blank" rel="noreferrer">
-          Upstatement
-        </a>
-        .
+        我热衷于创造优秀、实用且兼具设计感的数字体验。
+        目前，我专注于前端/全栈开发，喜欢用高效的代码把各种好玩的想法在网页上变为现实。
       </p>
     </>
   );
+
+  // 5. 最显眼的互动按钮（这里改成了点击直接触发给你发邮件）
   const five = (
     <a
       className="email-link"
-      href="https://www.newline.co/courses/build-a-spotify-connected-app"
+      href="mailto:dark.alpaca0.0@gmail.com"
       target="_blank"
       rel="noreferrer">
-      Check out my course!
+      联系我 / Get In Touch
     </a>
   );
+
+  // =================================================================
 
   const items = [one, two, three, four, five];
 

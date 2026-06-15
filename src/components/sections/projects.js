@@ -79,6 +79,7 @@ const StyledProject = styled.li`
   .project-top {
     ${({ theme }) => theme.mixins.flexBetween};
     margin-bottom: 35px;
+    width: 100%;
 
     .folder {
       color: var(--green);
@@ -138,6 +139,7 @@ const StyledProject = styled.li`
   .project-description {
     color: var(--light-slate);
     font-size: 17px;
+    width: 100%;
 
     a {
       ${({ theme }) => theme.mixins.inlineLink};
@@ -206,21 +208,69 @@ const Projects = () => {
     revealProjects.current.forEach((ref, i) => sr.reveal(ref, srConfig(i * 100)));
   }, []);
 
+  // ==================== 🎵 1. 音乐项目卡片数据（已全部转换为 MP3 路径） ====================
+  const musicProjects = [
+    {
+      node: {
+        isMusic: true,
+        audioSrc: '/music-demo1.mp3', // 💡 已改为 MP3
+        frontmatter: {
+          title: 'Music Demo 1 (Flow Tu Project)',
+          tech: ['Logic Pro', 'DAW', 'Mixing', 'Audio Post'],
+          github: '', 
+          external: '',
+        },
+        html: '列车激战（demo）',
+      },
+    },
+    {
+      node: {
+        isMusic: true,
+        audioSrc: '/music-demo2.mp3', // 💡 已改为 MP3
+        frontmatter: {
+          title: 'Music Demo 2',
+          tech: ['Audition', 'VST', 'Sound Design'],
+          github: '',
+          external: '',
+        },
+        html: '侦探们的镇魂曲（demo）',
+      },
+    },
+    {
+      node: {
+        isMusic: true,
+        audioSrc: '/music-demo3.mp3', // 💡 已改为 MP3
+        frontmatter: {
+          title: 'Music Demo 3',
+          tech: ['DAW', 'VST', 'Automation Testing'],
+          github: '',
+          external: '',
+        },
+        html: '真夜中（demo）', 
+      },
+    },
+  ];
+
   const GRID_LIMIT = 6;
-  const projects = data.projects.edges.filter(({ node }) => node);
+  const markdownProjects = data.projects.edges.filter(({ node }) => node);
+  
+  // 🔗 将音乐卡片和原本的代码项目拼合在一起，音乐项目置顶显示
+  const projects = [...musicProjects, ...markdownProjects];
+  
   const firstSix = projects.slice(0, GRID_LIMIT);
   const projectsToShow = showMore ? projects : firstSix;
 
   const projectInner = node => {
-    const { frontmatter, html } = node;
+    const { frontmatter, html, isMusic, audioSrc } = node;
     const { github, external, title, tech } = frontmatter;
 
     return (
       <div className="project-inner">
-        <header>
+        <header style={{ width: '100%' }}>
           <div className="project-top">
             <div className="folder">
-              <Icon name="Folder" />
+              {/* 如果是音乐项目，图标自动变成精致的音符 🎵 */}
+              {isMusic ? <span style={{ fontSize: '32px', lineHeight: '40px' }}>🎵</span> : <Icon name="Folder" />}
             </div>
             <div className="project-links">
               {github && (
@@ -242,12 +292,27 @@ const Projects = () => {
           </div>
 
           <h3 className="project-title">
-            <a href={external} target="_blank" rel="noreferrer">
-              {title}
-            </a>
+            {external ? (
+              <a href={external} target="_blank" rel="noreferrer">
+                {title}
+              </a>
+            ) : (
+              title
+            )}
           </h3>
 
           <div className="project-description" dangerouslySetInnerHTML={{ __html: html }} />
+          
+          {/* ==================== 🎧 核心：如果是音乐卡片，在此处渲染本地音频条 ==================== */}
+          {isMusic && (
+            <div style={{ marginTop: '20px', width: '100%' }} className="audio-player-container">
+              <audio controls style={{ width: '100%', height: '40px' }}>
+                {/* 💡 类型已修改为兼容性最好的 audio/mpeg */}
+                <source src={audioSrc} type="audio/mpeg" />
+                您的浏览器不支持音频播放。
+              </audio>
+            </div>
+          )}
         </header>
 
         <footer>
@@ -264,7 +329,7 @@ const Projects = () => {
   };
 
   return (
-    <StyledProjectsSection>
+    <StyledProjectsSection id="projects">
       <h2 ref={revealTitle}>Other Noteworthy Projects</h2>
 
       <Link className="inline-link archive-link" to="/archive" ref={revealArchiveLink}>

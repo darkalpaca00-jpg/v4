@@ -125,7 +125,16 @@ const About = () => {
     sr.reveal(revealContainer.current, srConfig());
   }, []);
 
-  const skills = ['JavaScript (ES6+)', 'TypeScript', 'React', 'Eleventy', 'Node.js', 'WordPress'];
+  // ==================== 🛠️ 1. 在这里修改你的技术栈标签 ====================
+  // 你可以自由删减或增加，每个技能用英文单引号包裹，用逗号隔开
+    const skills = [
+    'JavaScript',
+    'Vue.js / HTML & CSS',
+    'Vibe Coding (AI Programming)',
+    'Logic Pro / Audition',
+    'Audio Post-Production',
+    'AI Dataset & Automation Testing',
+  ];
 
   return (
     <StyledAboutSection id="about" ref={revealContainer}>
@@ -134,34 +143,23 @@ const About = () => {
       <div className="inner">
         <StyledText>
           <div>
+            {/* ==================== 🛠️ 2. 全新定制：融合开发与音乐的个人简介 ==================== */}
             <p>
-              Hello! My name is Brittany and I enjoy creating things that live on the internet. My
-              interest in web development started back in 2012 when I decided to try editing custom
-              Tumblr themes — turns out hacking together a custom reblog button taught me a lot
-              about HTML &amp; CSS!
+              你好！我是一名横跨**前端开发**与**音频技术/音乐制作**的数字化创作者。
+              我热衷于将代码的力量与声音的艺术相结合，打造不仅视觉体验流畅、同时具备优秀听觉与交互品质的数字产品。
             </p>
 
             <p>
-              Fast-forward to today, and I’ve had the privilege of working at{' '}
-              <a href="https://us.mullenlowe.com/">an advertising agency</a>,{' '}
-              <a href="https://starry.com/">a start-up</a>,{' '}
-              <a href="https://www.apple.com/">a huge corporation</a>, and{' '}
-              <a href="https://scout.camd.northeastern.edu/">a student-led design studio</a>. My
-              main focus these days is building accessible, inclusive products and digital
-              experiences at <a href="https://upstatement.com/">Upstatement</a> for a variety of
-              clients.
+              在音频领域，我熟练运用 DAW、VST 进行音频制作、混音与音效设计，
+              对声音的节奏、质感以及数字音频工作流有着敏锐的直觉和严谨的把控。
             </p>
 
             <p>
-              I also recently{' '}
-              <a href="https://www.newline.co/courses/build-a-spotify-connected-app">
-                launched a course
-              </a>{' '}
-              that covers everything you need to build a web app with the Spotify API using Node
-              &amp; React.
+              同时，作为一名现代开发者，我紧跟前沿技术，将 Vue.js、JavaScript 与 AI 编程 (Vibe Coding) 融入我的日常开发，
+              这种双重背景让我能够以独特的视角，去构建更具沉浸感的数字和多媒体应用。
             </p>
 
-            <p>Here are a few technologies I’ve been working with recently:</p>
+            <p>以下是我近期主要使用的一些技术、工具与软件：</p>
           </div>
 
           <ul className="skills-list">
@@ -171,6 +169,7 @@ const About = () => {
 
         <StyledPic>
           <div className="wrapper">
+            {/* 这里的图片路径指向的是 src/images/me.jpg */}
             <StaticImage
               className="img"
               src="../../images/me.jpg"
@@ -186,4 +185,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default About; 
