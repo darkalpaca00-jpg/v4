@@ -65,17 +65,16 @@ const Hero = () => {
   const one = <h1>Hi, my name is</h1>;
 
   // 2. 你的名字（大标题）
-  const two = <h2 className="big-heading">Urian.</h2>;
+  const two = <h2 className="big-heading">I‘m Urian.</h2>;
 
   // 3. 一句话职业定位（第二大标题）
-  const three = <h3 className="big-heading">我是一名全栈开发小白。</h3>;
+  const three = <h3 className="big-heading">你好！我是一名横跨前端开发与音频技术/音乐制作的数字化创作者。</h3>;
 
   // 4. 你的简短自我介绍
   const four = (
     <>
       <p>
-        我热衷于创造优秀、实用且兼具设计感的数字体验。
-        目前，我专注于前端/全栈开发，喜欢用高效的代码把各种好玩的想法在网页上变为现实。
+        
       </p>
     </>
   );
